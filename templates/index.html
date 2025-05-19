@@ -3,6 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Wizard duck's KWIC</title>
+    <style>
+        .InputDetail label{
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .ChooseDetail label{
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .ResultContainer{
+            flex-grow: 1;
+            overflow-y: auto;
+            padding: 10px;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -10,11 +29,13 @@
     <div class="InputDetail">
         <form id="InputTopic">
             <label for="InputTopic">Searched topic</label>
-            <input type="text" id="Topic" placeholder="Input topic!">
-        </form>  
-        
-        <form id="ChooseSearchTypes">
+            <input type="text" id="InputTopic" placeholder="Input topic!">
             <label for="ChooseSearchTypes">Search type</label>
+        </form>  
+    </div>
+        
+    <div class="ChooseDetail">
+        <form id="ChooseSearchTypes">
             <input type="radio" id="Token" name="SearchTypes" value="0" checked>
             <label for="Token">Token</label>
             <input type="radio" id="POS" name="SearchTypes" value="1">
@@ -22,11 +43,13 @@
             <input type="radio" id="Entity" name="SearchTypes" value="2">
             <label for="Entity">Entity</label>
         </form>
+    </div>
 
+    <div class="InputDetail">
         <form id="ChoosePOS">
-            <label for="ChoosePOS">Searched POS tags</label>
-            <select id="ChoosePOS">
-                <option value="" selected disbled>Choose Pos tags!</option>
+            <label for="SelectPOS">Searched POS tags</label>
+            <select id="SelectPOS">
+                <option value="" selected disabled>Choose Pos tags!</option>
                 <option value="CC">CC: Coordinating conjunction</option>
                 <option value="CD">CD: Cardinal number</option>
                 <option value="DT">DT: Determiner</option>
@@ -37,7 +60,7 @@
                 <option value="JJR">JJR: Adjective, comparative</option>
                 <option value="JJS">JJS: Adjective, superlative</option>
                 <option value="LS">LS: List item marker</option>
-                <option value="MD">MD: Model</option>
+                <option value="MD">MD: Modal</option>
                 <option value="NN">NN: Noun, singular or mass</option>
                 <option value="NNS">NNS: Noun, plural</option>
                 <option value="NNP">NNP: Proper noun, singular</option>
@@ -55,7 +78,7 @@
                 <option value="UH">UH: Interjection</option>
                 <option value="VB">VB: Verb, base form</option>
                 <option value="VBD">VBD: Verb, past tense</option>
-                <option value="VBG">VBG:</option>
+                <option value="VBG">VBG: Verb, gerund or present participle</option>
                 <option value="VBN">VBN: Verb, past participle</option>
                 <option value="VBP">VBP: Verb, non-3rd person singular present</option>
                 <option value="VBZ">VBZ: Verb, 3rd person singular present</option>
@@ -65,8 +88,18 @@
                 <option value="WRB">WRB: Wh-adverb</option>
             </select>
         </form>
+
+        <form id="InputKW">
+            <label for="InputKW">Searched key word</label>
+            <input type="text" id="KW" placeholder="Input key word!"> 
+        </form>
+    </div>
+
+    <div class="ResultContainer" id="ResultContainer">
+        <!-- It Shows result here. -->
+    </div>
 </body>
 
 <script>
-
+    const Topic = document.getElementById('Topic');
 </script>
