@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Wizard duck's KWIC</title>
+</head>
+
+<body>
+    <!--興味のあるページ、トークンorPOSorエンティティ、検索対象-->
+    <div class="InputDetail">
+        <form id="InputTopic">
+            <label for="InputTopic">Searched topic</label>
+            <input type="text" id="Topic" placeholder="Input topic!">
+        </form>  
+        
+        <form id="ChooseSearchTypes">
+            <label for="ChooseSearchTypes">Search type</label>
+            <input type="radio" id="Token" name="SearchTypes" value="0" checked>
+            <label for="Token">Token</label>
+            <input type="radio" id="POS" name="SearchTypes" value="1">
+            <label for="POS">POS</label>
+            <input type="radio" id="Entity" name="SearchTypes" value="2">
+            <label for="Entity">Entity</label>
+        </form>
+
+        <form id="ChoosePOS">
+            <label for="ChoosePOS">Searched POS tags</label>
+            <select id="ChoosePOS">
+                <option value="" selected disbled>Choose Pos tags!</option>
+                <option value="CC">CC: Coordinating conjunction</option>
+                <option value="CD">CD: Cardinal number</option>
+                <option value="DT">DT: Determiner</option>
+                <option value="EX">EX: Existential there</option>
+                <option value="FW">FW: Foreign word</option>
+                <option value="IN">IN: Preposition or subordinating conjunction</option>
+                <option value="JJ">JJ: Adjective</option>
+                <option value="JJR">JJR: Adjective, comparative</option>
+                <option value="JJS">JJS: Adjective, superlative</option>
+                <option value="LS">LS: List item marker</option>
+                <option value="MD">MD: Model</option>
+                <option value="NN">NN: Noun, singular or mass</option>
+                <option value="NNS">NNS: Noun, plural</option>
+                <option value="NNP">NNP: Proper noun, singular</option>
+                <option value="NNPS">NNPS: Proper noun, plural</option>
+                <option value="PDT">PDT: Predeterminer</option>
+                <option value="POS">POS: Possessive ending</option>
+                <option value="PRP">PRP: Personal pronoun</option>
+                <option value="PRP$">PRP$: Possessive pronoun</option>
+                <option value="RB">RB: Adverb</option>
+                <option value="RBR">RBR: Adverb, comparative</option>
+                <option value="RBS">RBS: Adverb, superlative</option>
+                <option value="RP">RP: Particle</option>
+                <option value="SYM">SYM: Symbol</option>
+                <option value="TO">TO: to</option>
+                <option value="UH">UH: Interjection</option>
+                <option value="VB">VB: Verb, base form</option>
+                <option value="VBD">VBD: Verb, past tense</option>
+                <option value="VBG">VBG:</option>
+                <option value="VBN">VBN: Verb, past participle</option>
+                <option value="VBP">VBP: Verb, non-3rd person singular present</option>
+                <option value="VBZ">VBZ: Verb, 3rd person singular present</option>
+                <option value="WDT">WDT: Wh-determiner</option>
+                <option value="WP">WP: Wh-pronoun</option>
+                <option value="WP$">WP$: Possessive wh-pronoun</option>
+                <option value="WRB">WRB: Wh-adverb</option>
+            </select>
+        </form>
+</body>
+
+<script>
+
+</script>
