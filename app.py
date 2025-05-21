@@ -55,12 +55,16 @@ def kwic_nltk(text, search_value, operation, window, color, sort_mode, next_n=1)
         if match:
             start = max(i - window, 0)
             end = min(i + len(search_tokens) + window, len(tokens))
-            context = tokens[start:i] + \
-                      [colored(" ".join(tokens[i:i + len(search_tokens)]), color, attrs=["bold"])] + \
-                      tokens[i + len(search_tokens):end]
+            context = (
+                " ".join(tokens[start:i]) +
+                ' <span style="color:{};font-weight:bold">'.format(color) +
+                " ".join(tokens[i:i + len(search_tokens)]) +
+                '</span> ' +
+                " ".join(tokens[i + len(search_tokens):end])
+            )
             results.append({
                 'index': i,
-                'context': "... " + " ".join(context) + " ...",
+                'context': "... " + context + " ...",
                 'token': " ".join(tokens[i:i + len(search_tokens)]),
                 'pos': " ".join([tagged[j][1] for j in range(i, i + len(search_tokens))])
             })
@@ -75,6 +79,23 @@ def kwic_nltk(text, search_value, operation, window, color, sort_mode, next_n=1)
                 if next_pos:
                     next_word_pos_counter[next_pos] += 1
                     next_word_pos_examples[next_pos].append("... " + " ".join(context) + " ...")
+
+    if sort_mode == 2:
+        # 次語頻度順にresultsを並べる
+        freq_order = [k for k, v in next_word_counter.most_common()]
+        def get_next_words(res):
+            # res['index']を使って次語をtokensから取得
+            idx = res['index'] + len(res['token'].split())
+            return tuple(tokens[idx:idx+1]) if idx < len(tokens) else ()
+        results.sort(key=lambda r: freq_order.index(get_next_words(r)) if get_next_words(r) in freq_order else len(freq_order))
+    elif sort_mode == 3:
+        freq_order = [k for k, v in next_word_pos_counter.most_common()]
+        def get_next_pos(res):
+            idx = res['index'] + len(res['token'].split())
+            return tuple(tagged[j][1] for j in range(idx, idx+1) if j < len(tagged))
+        results.sort(key=lambda r: freq_order.index(get_next_pos(r)) if get_next_pos(r) in freq_order else len(freq_order))
+    else:
+        results.sort(key=lambda x: x['index'])
 
     # ソートモードの処理はあなたの既存コードのままでOKです。
 
@@ -179,7 +200,10 @@ def chat():
             return jsonify({'status': 'error', 'message': 'Ambiguous interest', 'candidates': e.options})
 
         operation = int(data.get('Operation'))
-        target = data.get('Target', '')
+        if operation == 2:
+            target = data.get('POS','')
+        else:
+            target = data.get('Target', '')
         sort_mode = int(data.get('SortMode'))
         window = int(data.get('Window'))
 
