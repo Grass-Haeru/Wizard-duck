@@ -1,7 +1,3 @@
-一旦日本語で。
-
-現在KWICの紫タスクに挑戦中です。
-
-青タスクで、キーワードの次のposタグで検索する際に、多い単語順にソートされていない問題は修正中です。
-
-初めて実行する場合は、nltkとwikipediaとtermcolorをインストールし、nltk.download('all')を一度実行してからapp.pyを実行してください。
+We completed a purple task!
+Now, we are fixing visual in website.
+If you execute this app, then you must install nltk, termcolor, wikipedia, and flask.
