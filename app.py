@@ -192,12 +192,16 @@ def chat():
         data = request.form
 
         interest = data.get('Interest', '')
-        try:
-            text = wikipedia.summary(interest)
-        except wikipedia.exceptions.PageError:
-            return jsonify({'status': 'error', 'message': 'There is no interest.'})
-        except wikipedia.exceptions.DisambiguationError as e:
-            return jsonify({'status': 'error', 'message': 'Ambiguous interest', 'candidates': e.options})
+        text = data.get('TextInput', '')
+        if text=='':
+            if interest == '':
+                return jsonify({'status': 'error', 'message': 'Interest or TextInput is required.'})
+            try:
+                text = wikipedia.summary(interest)
+            except wikipedia.exceptions.PageError:
+                return jsonify({'status': 'error', 'message': 'There is no interest.'})
+            except wikipedia.exceptions.DisambiguationError as e:
+                return jsonify({'status': 'error', 'message': 'Ambiguous interest', 'candidates': e.options})
 
         operation = int(data.get('Operation'))
         if operation == 2:
