@@ -1,7 +1,7 @@
-一旦日本語で。
+Purple task is completed!
 
-現在KWICの紫タスクに挑戦中です。
+Some changes... 
+    You　can now analyze with your favorite text file (only '.txt'). 
+    Sequential numbers are now displayed for each analysis result.
 
-青タスクで、キーワードの次のposタグで検索する際に、多い単語順にソートされていない問題は修正中です。
-
-初めて実行する場合は、nltkとwikipediaとtermcolorをインストールし、nltk.download('all')を一度実行してからapp.pyを実行してください。
+When you execute this app, before you must install nltk, termcolor, wikipedia, and flask.
