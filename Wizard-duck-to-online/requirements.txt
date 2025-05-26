@@ -1,6 +1,0 @@
-flask
-nltk
-wikipedia
-gunicorn
-termcolor
-numpy
